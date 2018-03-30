@@ -1,8 +1,6 @@
 <?php
 
-echo "<head>
-    <link rel=\"stylesheet\" href=\"bootstrap.css\">
-</head>";
+
 
 echo '<h2  align="center" style="color: #ff245c">DZ №4.pagination </h2><br/><br/>';
 
