@@ -8,10 +8,23 @@
 require_once ("header.php");
 
 
-
-foreach (getLastTenNews($connect) as $value){
-   print showOneNews($value);
-
+if(!empty($_GET['category'])){
+    if(!empty(getCategoryNews($connect,$_GET['category']))){
+        foreach ( getCategoryNews($connect,$_GET['category'])as $value){
+            print showOnePreNews($value);
+        }
+    }else{
+        print showOneNews([]);
+    }
 }
+
+if(!empty($_GET['news'])){
+    if(!empty(getThisNews($connect,$_GET['news']))){
+            print showOneNews(getThisNews($connect,$_GET['news']));
+    }else{
+        print showOneNews([]);
+    }
+}
+
 require_once ("footer.php");
 
