@@ -6,9 +6,9 @@
  * Date: 30.03.2018
  * Time: 10:03
  */
-require_once ("dbconnect.php");
+require_once("config.php");
 
-//
+//Вывод категорий для меню
 function getArrayCategoryNames($connect){
 
     $sql="SELECT `category_id`,`category_name` FROM category ORDER BY `category_name`";
@@ -23,7 +23,7 @@ function getArrayCategoryNames($connect){
     return $r;
 }
 
-
+//последние 10 новостей
 function getLastTenNews($connect){
 
     $sql="SELECT * FROM news ORDER BY `news_id` DESC LIMIT 10";
@@ -35,7 +35,7 @@ function getLastTenNews($connect){
     return $result;
 }
 
-
+//взять новость по ее айди
 function getThisNews($connect,$news_id){
 
     $sql="SELECT * FROM news WHERE news_id='{$news_id}'";
@@ -43,6 +43,7 @@ function getThisNews($connect,$news_id){
     return mysqli_fetch_assoc($query);
 }
 
+//взять новости для этой категории
 function getCategoryNews($connect,$category_id){
 
     $sql="SELECT * FROM news WHERE category_id='{$category_id}'";
@@ -53,7 +54,7 @@ function getCategoryNews($connect,$category_id){
     return $result;
 }
 
-
+//вывод новости полный
 function showOneNews($news=[]){
 
     if(empty($news)){
@@ -73,7 +74,7 @@ function showOneNews($news=[]){
     return $str;
 }
 
-
+//вывод предописания
 function showOnePreNews($news=[]){
 
     if(empty($news)){
@@ -94,3 +95,4 @@ function showOnePreNews($news=[]){
           </div>";
     return $str;
 }
+

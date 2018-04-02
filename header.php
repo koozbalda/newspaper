@@ -86,7 +86,7 @@ require_once("myfunctions.php");
                             <!--                            <li role="separator" class="divider"></li>-->
                         </ul>
                     </li>
-                    <li><a href="/error/404.htm">Контакты</a></li>
+                    <li><a href="/controllers/404.htm">Контакты</a></li>
                     <!--                    <li>-->
                     <!--                        <form class="navbar-form navbar-right" role="form">-->
                     <!--                            <div class="form-group">-->
