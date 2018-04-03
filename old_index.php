@@ -235,3 +235,52 @@ if(!empty($head_table)){
 
 
 
+<?php
+
+$i = imageCreate(400, 600);
+$color = imageColorAllocate($i, 255, 255, 0);
+imageSetPixel($i, 30, 50, $color);
+
+$color = imageColorAllocate($i, 255, 0, 0);
+imageSetThickness($i, 3);
+
+imageLine($i, 10, 10, 160, 120, $color);
+
+imageSetThickness($i, 10);
+imageRectangle($i, 0, 0, imageSX($i), imageSY($i), $color);
+
+$color = imageColorAllocate($i, 0, 150, 255);
+imageFilledRectangle($i, 100, 200, 150, 240, $color);
+
+imageSetThickness($i, 3);
+
+imageArc($i, 53, 100, 60, 60, 0, 90, imagecolorallocate($i, 250,0,0));
+imageArc($i, 53, 102, 55, 55, 90, 180, imagecolorallocate($i, 0,0,255));
+imageArc($i, 50, 102, 50, 50, 180, 270, imagecolorallocate($i, 0,255,255));
+imageArc($i, 50, 100, 45, 45, 270, 360, imagecolorallocate($i, 255,0,255));
+imageArc($i, 53, 100, 40, 40, 0, 90, imagecolorallocate($i, 255,0,255));
+imageArc($i, 53, 102, 35, 35, 90, 180, imagecolorallocate($i, 255,0,255));
+imageArc($i, 50, 102, 30, 30, 180, 270, imagecolorallocate($i, 255,0,255));
+imageArc($i, 50, 100, 25, 25, 270, 360, imagecolorallocate($i, 255,0,255));
+imageArc($i, 53, 100, 20, 20, 0, 90, imagecolorallocate($i, 255,0,255));
+imageArc($i, 53, 102, 15, 15, 90, 180, imagecolorallocate($i, 255,0,255));
+imageArc($i, 50, 102, 10, 10, 180, 270, imagecolorallocate($i, 255,0,255));
+imageArc($i, 50, 100, 5, 5, 270, 360, imagecolorallocate($i, 255,0,255));
+imageSetThickness($i, 5);
+$color = imageColorAllocate($i, 100, 155, 145);
+
+imageSetThickness($i, 8);
+imagePolygon($i, array(
+    10, 10,
+    390, 10,
+    390, 590,
+    10, 590,
+    10, 10), 4, $color);
+
+//imagesetbrush($i, 8);
+imagefill($i,0,0,imagecolorallocate($i,255,150,0));
+imageellipse($i,200,300,100,100,imagecolorallocate($i,150,150,0));
+Header("Content-type: image/jpeg");
+imageJpeg($i);
+imageDestroy($i);
+?>

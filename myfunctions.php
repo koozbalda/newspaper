@@ -11,16 +11,7 @@ require_once("config.php");
 //Вывод категорий для меню
 function getArrayCategoryNames($connect){
 
-    $sql="SELECT `category_id`,`category_name` FROM category ORDER BY `category_name`";
 
-    $query=mysqli_query($connect,$sql);
-    while ($res[]=mysqli_fetch_assoc($query)){
-        $result=$res;
-    }
-    foreach ($result as $value){
-            $r[$value['category_id']]=$value['category_name'];
-    }
-    return $r;
 }
 
 //последние 10 новостей

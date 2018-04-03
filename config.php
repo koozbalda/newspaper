@@ -8,6 +8,6 @@
 define('HOST', 'localhost');//константа
 define('USER', 'root');//константа
 define('PASSWORD', '');//константа
-define('DATABASE', 'blog');//константа
+define('DATABASE', 'phploc');//константа
 
 //$connect = mysqli_connect(HOST, USER, PASSWORD, DATABASE);

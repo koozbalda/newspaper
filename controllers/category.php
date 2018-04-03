@@ -5,3 +5,5 @@
  * Date: 02.04.2018
  * Time: 18:58
  */
+
+require_once ($_SERVER['DOCUMENT_ROOT']."/views/category.php");
