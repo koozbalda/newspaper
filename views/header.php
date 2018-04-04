@@ -2,8 +2,9 @@
 
 
 <head>
-    <link rel="stylesheet" href="/bootstrap/css/bootstrap.css">
-    <link rel="stylesheet" href="/bootstrap/css/bootstrap-theme.css">
+    <link rel="stylesheet" href="/views/bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" href="/views/bootstrap/css/bootstrap-theme.css">
+<!--    <link rel="stylesheet" href="/bootstrap/css/bootstrap-theme.css">-->
 
 <!--    <title>-->
 <!--        --><?//=!empty($_GET['title'])?$_GET['title']:'NEWSPAPER'?>
@@ -97,4 +98,4 @@
 </div>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script src="bootstrap/js/bootstrap.js"></script>
+<script src="/views/bootstrap/js/bootstrap.js"></script>
