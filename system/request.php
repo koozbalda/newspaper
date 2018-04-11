@@ -11,12 +11,12 @@ function getView($name,$data=""){
 }
 
 function getHeader($data=""){
-    return require_once $_SERVER['DOCUMENT_ROOT']."/controllers/header.php";
+    return require_once $_SERVER['DOCUMENT_ROOT']."/views/header.php";
 }
 
 
 function getFooter($data=""){
-    return require_once $_SERVER['DOCUMENT_ROOT']."/controllers/footer.php";
+    return require_once $_SERVER['DOCUMENT_ROOT']."/views/footer.php";
 }
 
 function getCategoriesList($connect){
@@ -31,6 +31,13 @@ function getCategoriesList($connect){
     }
     return $r;
 }
+
+function render($name,$data=""){
+    getHeader($data);
+    getView($name,$data);
+    getFooter($data);
+}
+
 
 //формирование ссылки
 function mylink($name,$id=null){
