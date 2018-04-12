@@ -21,7 +21,10 @@ if (!empty($result)) {
 
     }
 }
-getView('home',$data);
+$data['category']=getCategoriesList($connect);
+
+render('home',$data);
+//getView('home',$data);
 //require_once ($_SERVER['DOCUMENT_ROOT']."/views/home.php");
 
 

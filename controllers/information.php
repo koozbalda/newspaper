@@ -8,4 +8,6 @@
 
 
 //require_once ($_SERVER['DOCUMENT_ROOT']."/views/home.php");
-render('home',"sdfsdf");
+$data['category']=getCategoriesList($connect);
+
+render('information',$data);

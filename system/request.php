@@ -6,16 +6,16 @@
  * Time: 18:54
  */
 
-function getView($name,$data=""){
+function getView($name,$data=null){
     return require_once $_SERVER['DOCUMENT_ROOT']."/views/".$name.".php";
 }
 
-function getHeader($data=""){
+function getHeader($data=null){
     return require_once $_SERVER['DOCUMENT_ROOT']."/views/header.php";
 }
 
 
-function getFooter($data=""){
+function getFooter($data=null){
     return require_once $_SERVER['DOCUMENT_ROOT']."/views/footer.php";
 }
 
@@ -32,7 +32,8 @@ function getCategoriesList($connect){
     return $r;
 }
 
-function render($name,$data=""){
+function render($name,$data=null){
+
     getHeader($data);
     getView($name,$data);
     getFooter($data);

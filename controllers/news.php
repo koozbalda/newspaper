@@ -6,8 +6,8 @@
  * Time: 18:58
  */
 
-//require_once ($_SERVER['DOCUMENT_ROOT']."/views/category.php");
 
 $data['category']=getCategoriesList($connect);
 
-render('category',$data);
+render('news',$data);
+
