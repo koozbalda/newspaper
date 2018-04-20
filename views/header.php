@@ -6,9 +6,9 @@
     <link rel="stylesheet" href="/views/bootstrap/css/bootstrap-theme.css">
 <!--    <link rel="stylesheet" href="/bootstrap/css/bootstrap-theme.css">-->
 
-<!--    <title>-->
-<!--        --><?//=!empty($_GET['title'])?$_GET['title']:'NEWSPAPER'?>
-<!--    </title>-->
+    <title>
+        <?=!empty($data['title'])?$data['title']:'NEWSPAPER'?>
+    </title>
     <!---->
     <!--        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">-->
     <!--        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">-->
@@ -96,33 +96,6 @@
         </div><!-- /.container-fluid -->
     </nav>
 </div>
-<?//=var_dump($_SERVER['PHP_SELF']);?>
-<?=var_dump($connect);?>
 
-<br>
-<?=is_null($connect);?>
-<br>
-<?=isset($connect);?>
-<br>
-<?=empty($connect);?>
-
-<br>
-<?php
-
-$myvar = NULL;
-var_dump( isset($myvar));
-echo '<br>';// возвращает FALSE
-$myvar = 0;
-var_dump(isset($myvar));
-echo '<br>'; // возвращает TRUE
-$myvar = FALSE;
-var_dump(isset($myvar));
-echo '<br>'; // возвращает TRUE
-$myvar = '';
-var_dump( isset($myvar));
-echo '<br>'; // возвращает TRUE
-var_dump( isset($some_undefined_var));
-echo    '<br>'; // возвращает FALSE
-?>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="/views/bootstrap/js/bootstrap.js"></script>
