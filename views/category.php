@@ -6,3 +6,4 @@
  * Time: 18:58
  */
 
+var_dump($_GET);

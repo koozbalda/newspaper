@@ -32,6 +32,47 @@ function getCategoriesList($connect){
     return $r;
 }
 
+
+/*
+function getCatDesc($connect,$id){
+    $sql="SELECT `category_description`,`category_name` FROM category WHERE `category_id`=$id";
+
+    $query=mysqli_query($connect,$sql);
+    while ($res[]=mysqli_fetch_assoc($query)){
+        $result=$res;
+    }
+//    foreach ($result as $value){
+//        $r[$value['category_id']]=$value['category_name'];
+//    }
+    return $result;
+}
+*/
+
+function getLastTenNews($connect){
+    $sql="SELECT * FROM news ORDER BY `news_id` DESC LIMIT 10";
+    $query=mysqli_query($connect,$sql);
+
+    while ($res[]=mysqli_fetch_assoc($query)){
+        $result=$res;
+    }
+    return $result;
+}
+
+
+
+//
+function allNewsInCat($connect,$id){
+    $sql="SELECT * FROM news ORDER BY `news_id` WHERE `category_id`=".$id;
+    $query=mysqli_query($connect,$sql);
+
+    while ($res[]=mysqli_fetch_assoc($query)){
+        $result=$res;
+    }
+    return $result;
+}
+
+
+
 function render($name,$data=null){
 
     getHeader($data);

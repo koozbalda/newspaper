@@ -7,25 +7,14 @@
  */
 
 $data=array();
-
-$sql="SELECT * FROM news ORDER BY `news_id` DESC LIMIT 10";
-
-$query=mysqli_query($connect,$sql);
-while ($res[]=mysqli_fetch_assoc($query)){
-    $result=$res;
-}
+//Подготовка данных для вьюхи
+$result=getLastTenNews($connect);
 if (!empty($result)) {
-
-
-    foreach ($result as $key => $value) {
-
-    }
+        $data['news']=$result;
 }
 $data['category']=getCategoriesList($connect);
-
+$data['title']='Последние новости';
 render('home',$data);
-//getView('home',$data);
-//require_once ($_SERVER['DOCUMENT_ROOT']."/views/home.php");
 
 
 

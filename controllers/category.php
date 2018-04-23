@@ -7,7 +7,12 @@
  */
 
 //require_once ($_SERVER['DOCUMENT_ROOT']."/views/category.php");
+if (!empty($_GET['route']) && !empty($_GET['category_id'])) {
 
-$data['category']=getCategoriesList($connect);
+} else {
 
-render('category',$data);
+}
+$data['category'] = getCategoriesList($connect);
+
+
+render('category', $data);
