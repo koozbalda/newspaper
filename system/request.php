@@ -62,7 +62,7 @@ function getLastTenNews($connect){
 
 //
 function allNewsInCat($connect,$id){
-    $sql="SELECT * FROM news ORDER BY `news_id` WHERE `category_id`=".$id;
+    $sql="SELECT * FROM news WHERE `category_id`=".$id." ORDER BY `news_id`";
     $query=mysqli_query($connect,$sql);
 
     while ($res[]=mysqli_fetch_assoc($query)){
@@ -70,6 +70,7 @@ function allNewsInCat($connect,$id){
     }
     return $result;
 }
+
 
 
 
