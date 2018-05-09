@@ -7,7 +7,20 @@
  */
 
 
-$data['category']=getCategoriesList($connect);
 
-render('news',$data);
+if (!empty($_GET['route']) && !empty($_GET['news_id'])) {
 
+    $data['category'] = getCategoriesList($connect);
+
+    $data['title']=$data['news']['news_header'];
+
+    $data['news']=getNewsById($connect,$_GET['news_id']);
+    if(!empty($data['news'])){
+
+        render('news',$data);
+    }else{
+        require_once $_SERVER['DOCUMENT_ROOT'] . "/controllers/404.php";
+    }
+} else {
+    require_once $_SERVER['DOCUMENT_ROOT'] . "/controllers/404.php";
+}

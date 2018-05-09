@@ -7,11 +7,12 @@ session_start();
  * Time: 15:10
  */
 
-require_once ($_SERVER['DOCUMENT_ROOT']."/views/header.php");
-require_once ($_SERVER['DOCUMENT_ROOT']."/views/footer.php");
-//if(!empty($_SESSION['is_admin'])&&$_SESSION['is_admin']==true){
-//
-//    var_dump($_SESSION);
-//}else{
-//    echo "<div>pshel von schenok</div>";
-//}
+//require_once ($_SERVER['DOCUMENT_ROOT']."/views/header.php");
+//require_once ($_SERVER['DOCUMENT_ROOT']."/views/footer.php");
+if(!empty($_SESSION['is_admin'])&&$_SESSION['is_admin']==true){
+
+    var_dump($_SESSION);
+
+}else{
+    echo "<div>pshel von schenok</div>";
+}
