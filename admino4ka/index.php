@@ -7,7 +7,10 @@ if (empty($_SESSION['success'])) {
 
 
     $url='/admino4ka';
-
+//    $t_name='news';
+    $t_name='category';
+//    $t_name='information';
+//    $t_name='users';
 
 echo "<head>
     <link rel='stylesheet' href='/bootstrap/css/bootstrap.css'>
@@ -38,6 +41,30 @@ function createTable($connect)
         echo "table exist";
         return false;
     }
+}
+
+//function getNameTableById($infoConnect,$id=null){
+//    $name="";
+//    return $name;
+//}
+//function getArrayNameTable($infoConnect,$db_name=DATABASE){
+//    $query="";
+//    $result=mysqli_query($infoConnect,$query);
+//    while ($res[]=mysqli_fetch_assoc($result)){
+//        $arr=$res;
+//    }
+//
+//    return $arr;
+//}
+//var_dump($infoConnect);
+//var_dump($connect);
+function getPrimaryKeyByName($infoConnect,$table_name='news'){
+    $query="SELECT `COLUMN_NAME` FROM `COLUMNS` WHERE `TABLE_SCHEMA`='".DATABASE."' AND `TABLE_NAME`='{$table_name}' AND `COLUMN_KEY`='PRI'";
+    $result=mysqli_query($infoConnect,$query);
+        while ($res[]=mysqli_fetch_assoc($result)){
+            $primary=$res;
+        }
+   return $primary[0]['COLUMN_NAME'];
 }
 
 
@@ -98,12 +125,16 @@ function table_exist($connect, $searchtable = 'users')
  * @param $per_page
  * @return array
  */
-function getArrayFromTable($connect, $page, $per_page)
+function getArrayFromTable($connect,$infoConnect, $page, $per_page,$name=null)
 {
+        $table_name=!empty($name)?$name:'news';
+        $key=getPrimaryKeyByName($infoConnect,$table_name);;
+
+
+
     $begin = ($page - 1) * $per_page;
 
-    $sql = "SELECT * FROM news ORDER BY `news_id` DESC LIMIT {$begin},{$per_page}"; //ASC
-
+    $sql = "SELECT * FROM {$table_name} ORDER BY `{$key}` DESC LIMIT {$begin},{$per_page}"; //ASC
     $query = mysqli_query($connect, $sql);
     while ($res[] = mysqli_fetch_assoc($query)) {
         $news = $res;
@@ -140,12 +171,12 @@ function getCountRows($connect, $name = 'news')
 
 $per_page = empty($_GET['per-page']) ? 5 : $_GET['per-page'];
 
-$last_page = ceil(getCountRows($connect) / $per_page);
+$last_page = ceil(getCountRows($connect,$t_name) / $per_page);
 
 $page = empty($_GET['page']) || $_GET['page'] > $last_page ? 1 : $_GET['page'];
 
 
-$requestArray = getArrayFromTable($connect, $page, $per_page);
+$requestArray = getArrayFromTable($connect,$infoConnect, $page, $per_page,$t_name);
 
 if (!empty($requestArray)) {
     $head_table = array_keys($requestArray[0]);
@@ -200,10 +231,10 @@ if (!empty($requestArray)) {
             foreach ($requestArray as $value) {
                 echo "<tr>";
                 foreach ($value as $key => $value) {
-                    if ($key == 'news_id') {
+                    if ($key == $t_name.'_id') {
                         $accum = "<td>";
-                        $accum .="<a href='newsedit.php?news_id=" . $value . "'><span class='glyphicon glyphicon-pencil'></span></a><br><br>";
-                        $accum .="<a href='delete.php?news_id=" . $value . "' onclick='return confirm(\"Вы уверены, что хотите удалить этот элемент?\")' ><span class='glyphicon glyphicon-trash'></span></a>";
+                        $accum .="<a href='newsedit.php?{$t_name}_id=" . $value . "'><span class='glyphicon glyphicon-pencil'></span></a><br><br>";
+                        $accum .="<a href='delete.php?{$t_name}_id=" . $value . "' onclick='return confirm(\"Вы уверены, что хотите удалить этот элемент?\")' ><span class='glyphicon glyphicon-trash'></span></a>";
                         $accum .="</td>";
                         echo $accum;
                     } else {
